@@ -1,0 +1,29 @@
+{
+    "doneTasks": [
+      {
+        "id": 1,
+        "title": "Task 1",
+        "deadlineDate": "2020-09-04",
+        "deadlineTime": "14:00",
+        "description": "This is a brief description of task 1. It might be a bit longer to see how it truncates."
+      }
+    ],
+    "todayTasks": [
+      {
+        "id": 2,
+        "title": "Task 2",
+        "deadlineDate": "2023-09-05",
+        "deadlineTime": "15:00",
+        "description": "Description for task 2."
+      }
+    ],
+    "backlogTasks": [
+      {
+        "id": 3,
+        "title": "Task 3",
+        "deadlineDate": "2023-09-15",
+        "deadlineTime": "15:00",
+        "description": "Description for task 3."
+      }
+    ]
+  }
