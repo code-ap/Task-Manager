@@ -1,6 +1,8 @@
-# Nuxt 3 Minimal Starter
+# Frontend Setup using Nuxt 3
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+## Requirements
+
+Install Node.js version v16.18+
 
 ## Setup
 
@@ -16,6 +18,19 @@ pnpm install
 # yarn
 yarn install
 ```
+
+## Environment Setup
+
+Create an `.env` file in the root directory of your project with the API Keys from Supabase.
+
+You can find your API keys [here](https://supabase.com/dashboard/project/_/settings/api).
+
+```
+SUPABASE_URL=https://`<project>`.supabase.co
+SUPABASE_KEY=<your-anon-key>
+```
+
+⚠️  **Security Note** : Never commit your `.env` file or any sensitive keys to public repositories!
 
 ## Development Server
 
