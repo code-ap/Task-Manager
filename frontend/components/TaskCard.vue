@@ -10,13 +10,11 @@
   </NuxtLink>
 </template>
 
-<script>
-export default {
-  props: {
-    task: {
-      type: Object,
-      required: true
-    }
+<script setup>
+const props = defineProps({
+  task: {
+    type: Object,
+    required: true
   }
-}
+});
 </script>
