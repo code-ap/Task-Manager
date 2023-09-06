@@ -52,6 +52,12 @@
                     {{ mode === 'create' ? 'Create' : 'Edit' }}
                 </button>
             </div>
+            <div v-if="mode === 'edit'" class="mt-4">
+                <button @click.prevent="handleDelete"
+                    class="block w-full rounded-md bg-red-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600">
+                    Delete
+                </button>
+            </div>
         </form>
     </div>
 </template>
@@ -59,14 +65,14 @@
 <script setup>
 const supabase = useSupabaseClient();
 const { mode, taskData } = defineProps({
-  mode: {
-    type: String,
-    default: 'create'
-  },
-  taskData: {
-    type: Object,
-    default: () => ({})
-  }
+    mode: {
+        type: String,
+        default: 'create'
+    },
+    taskData: {
+        type: Object,
+        default: () => ({})
+    }
 });
 
 const form = reactive({
@@ -85,12 +91,26 @@ const handleSubmit = async () => {
     } else if (mode === 'edit') {
         // Handle the editing logic here
         const { error } = await supabase
-           .from('tasks')
-           .update(formData)
-           .eq('id', taskData.id);
+            .from('tasks')
+            .update(formData)
+            .eq('id', taskData.id);
         if (error) console.error(error);
     }
     navigateTo('/');  // Redirect to root
+}
+
+const handleDelete = async () => {
+    if (confirm("Are you sure to delete task "+taskData.title + "?")) {
+        const { error } = await supabase
+            .from('tasks')
+            .delete()
+            .eq('id', taskData.id);
+        if (error) {
+            console.error(error);
+        } else {
+            navigateTo('/');  // Redirect to root after deletion
+        }
+    }
 }
 
 </script>
