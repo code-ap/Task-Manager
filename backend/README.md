@@ -87,3 +87,26 @@ AS PERMISSIVE FOR ALL
 TO public
 USING (creator = auth.uid() OR responsible = auth.uid());
 ```
+
+Table Boards
+
+```
+create table boards(
+   id uuid primary key default uuid_generate_v4(),
+   title varchar(255) not null,
+   description text,
+   created_at timestamp default current_timestamp,
+   creator uuid references profiles (id)
+);
+```
+
+Table List
+
+```
+create table lists(
+   id uuid primary key default uuid_generate_v4(),
+   title varchar(255) not null,
+   position int not null,
+   board_id uuid references boards (id)
+);
+```
